@@ -1,0 +1,12 @@
+{
+  "name": "terabox-pinger",
+  "version": "1.0.0",
+  "description": "Terabox NDUS Keep-Alive Pinger — deploy ke Suga.app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "node-cron": "^3.0.3"
+  }
+}
