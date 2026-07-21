@@ -2,7 +2,7 @@ const https=require("https"),http=require("http"),cron=require("node-cron"),TB_B
 function log(e,m){const t=new Date().toLocaleString("id-ID",{timeZone:"Asia/Jakarta"});console.log(`[${t}] ${e} ${m}`)}
 function fetchWithRedirect(u,c,mx=10){return new Promise((rs,rj)=>{let cu=u,rd=0;const ac=[],al=[];
 function df(fu){const p=new URL(fu),hs=p.protocol==="https:",hm=hs?https:http;
-headers={"User-Agent":TB_UA,Accept:"text/html,application/xhtml+xml","Accept-Language":"id-ID,id;q=0.9,en;q=0.8"};if(c)headers.Cookie=c;
+const headers={"User-Agent":TB_UA,Accept:"text/html,application/xhtml+xml","Accept-Language":"id-ID,id;q=0.9,en;q=0.8"};if(c)headers.Cookie=c;
 const re=hm.request(fu,{method:"GET",headers,rejectUnauthorized:false},(r)=>{const sc=r.headers["set-cookie"];if(sc)ac.push(...(Array.isArray(sc)?sc:[sc]));
 const l=r.headers.location;if((r.statusCode===301||r.statusCode===302||r.statusCode===307||r.statusCode===308)&&l){if(rd>=mx)return rs({statusCode:r.statusCode,finalUrl:fu,cookies:ac,locations:al,tooManyRedirects:true});rd++;
 al.push(l);r.resume();return df(new URL(l,fu).href)}
